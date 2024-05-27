@@ -14,6 +14,13 @@ The goals of this activity are to:
 Hi I am Seonghyun.
 and now I created a new branch.
 Now I am testing pull.
+<<<<<<< HEAD
+Source of conflict
+=======
+Testing conflict....
+>>>>>>> main
+
+I am going to undo this commit
 
 # The Task
 
