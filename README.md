@@ -11,17 +11,6 @@ The goals of this activity are to:
 - give you a first experience of coding in a collaborative environment
 - experiment with how to most effectively divide up coding tasks
 
-Hi I am Seonghyun.
-and now I created a new branch.
-Now I am testing pull.
-<<<<<<< HEAD
-Source of conflict
-=======
-Testing conflict....
->>>>>>> main
-
-I am going to undo this commit
-
 # The Task
 
 Now that we are familiar with the process of branching and making pull requests from the
