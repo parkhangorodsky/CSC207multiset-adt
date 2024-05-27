@@ -11,6 +11,8 @@ The goals of this activity are to:
 - give you a first experience of coding in a collaborative environment
 - experiment with how to most effectively divide up coding tasks
 
+Hi I am Seonghyun.
+
 # The Task
 
 Now that we are familiar with the process of branching and making pull requests from the
