@@ -12,7 +12,8 @@ The goals of this activity are to:
 - experiment with how to most effectively divide up coding tasks
 
 Hi I am Seonghyun.
-and now I created a new branch
+and now I created a new branch.
+Now I am testing pull.
 
 # The Task
 
