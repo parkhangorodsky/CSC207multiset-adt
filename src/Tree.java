@@ -128,6 +128,7 @@ public class Tree<T> {
         }
     }
 
+    // Return true if this tree contains the item
     public boolean contains(T item) {
         if (this.isEmpty()) {
             return false;
@@ -143,6 +144,23 @@ public class Tree<T> {
                 }
                 return false;
             }
+        }
+    }
+
+    // Return all leaf items in this tree
+    public ArrayList<T> leaves() {
+        if (this.isEmpty()) {
+            return new ArrayList<>();
+        } else if (this.subtrees.isEmpty()) {
+            ArrayList<T> leaves =  new ArrayList<>();
+            leaves.add(this.root);
+            return leaves;
+        } else {
+            ArrayList<T> leaves = new ArrayList<>();
+            for (Tree<T> subtree : this.subtrees) {
+                leaves.addAll(subtree.leaves());
+            }
+            return leaves;
         }
     }
 
