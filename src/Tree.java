@@ -28,8 +28,9 @@ public class Tree<T> {
     }
 
     public boolean isEmpty(){
-        return this.subtrees.isEmpty();
+        return this.root == null;
     }
+
 
 
 
