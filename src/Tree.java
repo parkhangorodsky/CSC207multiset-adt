@@ -229,6 +229,22 @@ public class Tree<T> {
         }
     }
 
+    // Insert item under the leftmost tree with root value equal to parent.
+    public boolean insertChild(T item, T parent) {
+        if (this.isEmpty()) {
+            return false;
+        } else if (this.root.equals(parent)) {
+            this.subtrees.add(new Tree<>(item));
+            return true;
+        } else {
+            for (Tree <T> subtree : this.subtrees) {
+                if (subtree.insertChild(item, parent)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
 }
 
 
