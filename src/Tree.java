@@ -128,5 +128,23 @@ public class Tree<T> {
         }
     }
 
+    public boolean contains(T item) {
+        if (this.isEmpty()) {
+            return false;
+        } else {
+
+            if (this.root.equals(item)) {
+                return true;
+            } else {
+                for (Tree<T> subtree : this.subtrees) {
+                    if (subtree.contains(item)) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+    }
+
 
 }
