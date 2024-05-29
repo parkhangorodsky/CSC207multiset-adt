@@ -1,8 +1,8 @@
-import javax.xml.stream.FactoryConfigurationError;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Random;
 
 
 public class Tree<T> {
@@ -164,5 +164,49 @@ public class Tree<T> {
         }
     }
 
+    // Delete one occurrence of item and return true.
+    // Return false if item does not occur in this tree.
+    public boolean deleteItem(T item) {
+        if (this.isEmpty()) {
+            return false;
+        } else if (this.root.equals(item)) {
+            this.deleteRoot();
+            return true;
+        } else {
+            for (Tree<T> subtree : this.subtrees) {
+                if (subtree.deleteItem(item)) {
+                    if (subtree.isEmpty()) {
+                        this.subtrees.remove(subtree);
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
 
-}
+    private void deleteRoot() {
+        if (this.subtrees.isEmpty()) {
+            this.root = null;
+        } else {
+            Tree<T> chosenTree = this.subtrees.removeLast();
+            this.root = chosenTree.root;
+            this.subtrees.addAll(chosenTree.subtrees);
+        }
+    }
+
+    // Return the item in the leftmost leaf
+    public T getLeftmostLeaf() {
+        if (this.subtrees.isEmpty()) {
+            T oldRoot = this.root;
+            this.root = null;
+            return oldRoot;
+        } else {
+            T leftmostLeaf = this.subtrees.getFirst().getLeftmostLeaf();
+            if (this.subtrees.getFirst().isEmpty()) {
+                this.subtrees.removeFirst();
+            }
+            return leftmostLeaf;
+        }
+    }
+
