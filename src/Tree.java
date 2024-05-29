@@ -1,4 +1,9 @@
+import javax.xml.stream.FactoryConfigurationError;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+
 
 public class Tree<T> {
     private T root;
@@ -28,6 +33,7 @@ public class Tree<T> {
         return this.root == null;
     }
 
+    // Return the number of nodes in this tree
     public int size() {
         if (this.isEmpty()) {
             return 0;
@@ -41,6 +47,7 @@ public class Tree<T> {
 
     }
 
+    // Return the number of nodes with the root value equal to item
     public int count(T item) {
         if (this.isEmpty()) {
             return 0;
@@ -56,6 +63,7 @@ public class Tree<T> {
         }
     }
 
+    // Return the string representation of this tree
     @Override
     public String toString() {
         return this.strIndented(0);
@@ -74,5 +82,27 @@ public class Tree<T> {
         }
     }
 
+    // Return the average value in this tree.
+    public double average() {
+        if (this.isEmpty()) {
+            return 0;
+        } else {
+            int[] sumAndCount = this.averageHelper();
+            return (double) sumAndCount[0] / sumAndCount[1];
+        }
+    }
 
-}
+    private int[] averageHelper() {
+        int[] pair = new int[2];
+        if (!this.isEmpty()) {
+            pair[0] += (Integer) this.root;
+            pair[1] += 1;
+            for (Tree<T> subtree : this.subtrees) {
+                int[] subPair = subtree.averageHelper();
+                pair[0] += subPair[0];
+                pair[1] += subPair[1];
+            }
+        }
+        return pair;
+    }
+
