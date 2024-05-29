@@ -27,6 +27,9 @@ public class Tree<T> {
         this.subtrees = new ArrayList<>(subtrees);
     }
 
+    public boolean isEmpty(){
+        return this.subtrees.isEmpty();
+    }
 
 
 
