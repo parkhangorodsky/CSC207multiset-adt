@@ -106,3 +106,27 @@ public class Tree<T> {
         return pair;
     }
 
+    // Return true if this and other trees are equal
+    // Okay this is a messy code..
+    @Override
+    public boolean equals(Object other) {
+
+        if (!(other instanceof Tree)){
+            return false;
+        } else if (this == other) {
+            return true;
+        } else if (this.isEmpty() && ((Tree<?>) other).isEmpty()) {
+            return true;
+        } else if (this.isEmpty() || ((Tree<?>) other).isEmpty()) {
+            return false;
+        } else if (this.root != ((Tree<?>) other).root) {
+            return false;
+        } else if (this.size() != ((Tree<?>) other).size()) {
+            return false;
+        } else {
+            return this.subtrees.equals(((Tree<?>) other).subtrees);
+        }
+    }
+
+
+}
