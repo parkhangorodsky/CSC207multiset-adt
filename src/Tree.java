@@ -10,14 +10,14 @@ public class Tree<T> {
     private ArrayList<Tree<T>> subtrees;
 
     // Constructors for empty trees
-    public Tree(){
+    public Tree() {
         this.root = null;
         this.subtrees = new ArrayList<>();
 
     }
 
     // Constructor for trees with no children
-    public Tree(T root){
+    public Tree(T root) {
         this.root = root;
         this.subtrees = new ArrayList<>();
 
@@ -29,7 +29,7 @@ public class Tree<T> {
         this.subtrees = new ArrayList<>(subtrees);
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return this.root == null;
     }
 
@@ -53,7 +53,7 @@ public class Tree<T> {
             return 0;
         } else {
             int num = 0;
-            if (this.root.equals(item)){
+            if (this.root.equals(item)) {
                 num = 1;
             }
             for (Tree<T> subtree : this.subtrees) {
@@ -111,7 +111,7 @@ public class Tree<T> {
     @Override
     public boolean equals(Object other) {
 
-        if (!(other instanceof Tree)){
+        if (!(other instanceof Tree)) {
             return false;
         } else if (this == other) {
             return true;
@@ -152,7 +152,7 @@ public class Tree<T> {
         if (this.isEmpty()) {
             return new ArrayList<>();
         } else if (this.subtrees.isEmpty()) {
-            ArrayList<T> leaves =  new ArrayList<>();
+            ArrayList<T> leaves = new ArrayList<>();
             leaves.add(this.root);
             return leaves;
         } else {
@@ -209,4 +209,27 @@ public class Tree<T> {
             return leftmostLeaf;
         }
     }
+
+
+    // Insert the item into this tree
+    public void insert(T item) {
+        if (this.isEmpty()) {
+            this.root = item;
+        } else if (this.subtrees.isEmpty()) {
+            this.subtrees.add(new Tree<>(item));
+        } else {
+            Random rand = new Random();
+            int randint = rand.nextInt(3) + 1;
+            if (randint == 3) {
+                this.subtrees.add(new Tree<>(item));
+            } else {
+                int randSubtree = rand.nextInt(this.subtrees.size());
+                this.subtrees.get(randSubtree).insert(item);
+            }
+        }
+    }
+
+}
+
+
 
