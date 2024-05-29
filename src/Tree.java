@@ -56,7 +56,23 @@ public class Tree<T> {
         }
     }
 
+    @Override
+    public String toString() {
+        return this.strIndented(0);
+    }
 
+    private String strIndented(int depth) {
+        if (this.isEmpty()) {
+            return "";
+        } else {
+            StringBuilder str;
+            str = new StringBuilder("   ".repeat(depth) + this.root.toString() + "\n");
+            for (Tree<T> subtree : this.subtrees) {
+                str.append(subtree.strIndented(depth + 1));
+            }
+            return str.toString();
+        }
+    }
 
 
 }
