@@ -41,6 +41,21 @@ public class Tree<T> {
 
     }
 
+    public int count(T item) {
+        if (this.isEmpty()) {
+            return 0;
+        } else {
+            int num = 0;
+            if (this.root.equals(item)){
+                num = 1;
+            }
+            for (Tree<T> subtree : this.subtrees) {
+                num += subtree.count(item);
+            }
+            return num;
+        }
+    }
+
 
 
 
